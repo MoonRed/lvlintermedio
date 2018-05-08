@@ -202,6 +202,36 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7f186725edc7c94d8a2697eda11d29e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &894711699 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1827352396223194, guid: 0925047a55494ab49b90ec3067998ae3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1053841477}
+--- !u!4 &894711700 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4096677599668982, guid: 0925047a55494ab49b90ec3067998ae3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1053841477}
+--- !u!114 &894711705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 894711699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e41d0d2983b77e84e8754047ef1bfb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camara: {fileID: 0}
+  motor: {fileID: 1053841479}
+  personaje: {fileID: 1053841480}
+  distanciaArriba: 0
+  distanciaLejana: 0
+  distanciaArribaAux: 5
+  distanciaLejanaAux: 1.5
+  sensibilidad: 3
+  tiempoLookAr: 0.1
 --- !u!1001 &1053841477
 Prefab:
   m_ObjectHideFlags: 0
@@ -260,16 +290,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5afe33f73f4b724b96116d8141d265f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  capCollider: {fileID: 0}
+  animator: {fileID: 1053841482}
+  capCollider: {fileID: 1053841481}
   velDireccion: 1.5
-  cam: {fileID: 0}
+  cam: {fileID: 894711700}
   velDampTime: 0.05
   fovDampTime: 3
   dirDampTime: 0.25
   multiSalto: 1
   distSalto: 1
   rotPorSegundo: 120
+--- !u!4 &1053841480 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4455527637764588, guid: 0925047a55494ab49b90ec3067998ae3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1053841477}
+--- !u!136 &1053841481 stripped
+CapsuleCollider:
+  m_PrefabParentObject: {fileID: 136638033084299130, guid: 0925047a55494ab49b90ec3067998ae3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1053841477}
+--- !u!95 &1053841482 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95333426648204594, guid: 0925047a55494ab49b90ec3067998ae3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1053841477}
 --- !u!1 &1207286980
 GameObject:
   m_ObjectHideFlags: 0
