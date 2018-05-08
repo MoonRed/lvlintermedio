@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b6a880a52b79da4cae192e7ede74f63, type: 3}
-  m_Name: Espada
+  m_Name: Objeto
   m_EditorClassIdentifier: 
-  nombre: Espada
-  valor: 30
+  nombre: p1
+  valor: 100

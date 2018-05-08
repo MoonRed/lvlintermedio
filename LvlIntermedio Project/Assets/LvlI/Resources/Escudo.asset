@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6a880a52b79da4cae192e7ede74f63, type: 3}
   m_Name: Escudo
   m_EditorClassIdentifier: 
-  nombre: 
-  valor: 0
+  nombre: Escudo
+  valor: 10

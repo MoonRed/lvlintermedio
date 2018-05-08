@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4729812307972392}
   - component: {fileID: 95132443375678088}
   - component: {fileID: 136682288715757568}
+  - component: {fileID: 195398010764985048}
+  - component: {fileID: 114416407697123544}
   m_Layer: 0
   m_Name: Beta Enemigo
   m_TagString: Untagged
@@ -2087,7 +2089,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1014554715934436}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: aef9e0d7fbf9f924091a41b93ff4fa44, type: 3}
   m_Controller: {fileID: 9100000, guid: 10f6f0114596b754b8fbd0577f59e470, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -2097,6 +2099,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114416407697123544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014554715934436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94da3eb484001c8489dc6909e3ffafc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agente: {fileID: 195398010764985048}
+  objetivo: {fileID: 0}
 --- !u!136 &136682288715757568
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2373,3 +2388,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.027751252, y: 0.36849865, z: 0.09491216}
     m_Extent: {x: 0.2613353, y: 0.4854851, z: 0.26900023}
   m_DirtyAABB: 0
+--- !u!195 &195398010764985048
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014554715934436}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.4
+  m_Speed: 7
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
