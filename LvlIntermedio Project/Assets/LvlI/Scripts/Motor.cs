@@ -116,7 +116,7 @@ namespace LvlI
 			StickLogica(this.transform, cam, ref direccion, ref velPersonaje, ref anguloPersonaje, IsPivotando());
 
 			// Evento Sprint
-			if (Input.GetButton("Sprint"))
+			/*if (Input.GetButton("Sprint"))
 			{
 				velocidad = Mathf.Lerp(velocidad, SPRINT_VEL, Time.deltaTime);
 				cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(cam.GetComponent<Camera>().fieldOfView, SPRINT_FOV, fovDampTime * Time.deltaTime);
@@ -125,7 +125,7 @@ namespace LvlI
 			{
 				velocidad = velPersonaje;
 				cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(cam.GetComponent<Camera>().fieldOfView, NORMAL_FOV, fovDampTime * Time.deltaTime);
-			}
+			}*/
 
 			// Forzar la direccion y velocidad del personaje
 			animator.SetFloat("Speed", velocidad, velDampTime, Time.deltaTime);
