@@ -848,6 +848,9 @@ GameObject:
   - component: {fileID: 95333426648204594}
   - component: {fileID: 54280854405577344}
   - component: {fileID: 136638033084299130}
+  - component: {fileID: 114532436584304608}
+  - component: {fileID: 114369561093990034}
+  - component: {fileID: 114022227164033398}
   m_Layer: 0
   m_Name: Beta
   m_TagString: Player
@@ -867,6 +870,7 @@ GameObject:
   - component: {fileID: 124481122418802904}
   - component: {fileID: 81410916755912094}
   - component: {fileID: 114664081378120848}
+  - component: {fileID: 114013760206222816}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2218,6 +2222,100 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114013760206222816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827352396223194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e41d0d2983b77e84e8754047ef1bfb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camara: {fileID: 0}
+  motor: {fileID: 114532436584304608}
+  personaje: {fileID: 4455527637764588}
+  distanciaArriba: 0
+  distanciaLejana: 0
+  distanciaArribaAux: 5
+  distanciaLejanaAux: 1.5
+  sensibilidad: 3
+  tiempoLookAr: 0.1
+--- !u!114 &114022227164033398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799941229532934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114369561093990034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799941229532934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 9
+    i1: 37
+    i2: 4
+    i3: 122
+    i4: 85
+    i5: 73
+    i6: 74
+    i7: 180
+    i8: 155
+    i9: 144
+    i10: 236
+    i11: 48
+    i12: 103
+    i13: 153
+    i14: 138
+    i15: 227
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &114532436584304608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799941229532934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5afe33f73f4b724b96116d8141d265f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95333426648204594}
+  capCollider: {fileID: 136638033084299130}
+  velDireccion: 1.5
+  cam: {fileID: 4096677599668982}
+  velDampTime: 0.05
+  fovDampTime: 3
+  dirDampTime: 0.25
+  multiSalto: 1
+  distSalto: 1
+  rotPorSegundo: 120
 --- !u!114 &114664081378120848
 MonoBehaviour:
   m_ObjectHideFlags: 1

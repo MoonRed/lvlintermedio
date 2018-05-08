@@ -9,6 +9,7 @@
 
 #region Librerias
 using UnityEngine;
+using UnityEngine.Networking;
 #endregion
 
 namespace LvlI
@@ -16,7 +17,7 @@ namespace LvlI
 	/// <summary>
 	/// <para>Logica del personaje.</para>
 	/// </summary>
-	public class Motor : MonoBehaviour
+	public class Motor : NetworkBehaviour
 	{
 		#region Constantes
 		private const float SPRINT_VEL = 2.0f;
@@ -86,6 +87,9 @@ namespace LvlI
 		#region Actualizadores
 		private void Update()
 		{
+			if (!isLocalPlayer)
+				return;
+
 			// Si hay un animator
 			if (animator)
 			{
@@ -149,6 +153,10 @@ namespace LvlI
 
 		private void FixedUpdate()
 		{
+
+			if (!isLocalPlayer)
+				return;
+
 			// Girar el modelo si la palanca esta inclinada hacia la derecha o izquierda, pero solo si el personaje se mueve en esa direccion
 			if (IsInLocomotion() && !IsPivotando() && ((direccion >= 0 && leftX >= 0) || (direccion < 0 && leftX < 0)))
 			{

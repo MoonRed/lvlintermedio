@@ -72,8 +72,8 @@ namespace LvlI
 				Debug.LogError("No existe camara en el objeto.",this);
 			}
 
-			motor = GameObject.FindWithTag("Player").GetComponent<Motor>();
-			personaje = GameObject.FindWithTag("Player").transform;
+			motor = GetComponentInParent<Motor>();
+			personaje = motor.transform;
 
 			dirFija = personaje.forward;
 			actualDirFija = personaje.forward;
@@ -96,6 +96,12 @@ namespace LvlI
 		#endregion
 
 		#region Actualizadores
+		private void Update()
+		{
+			if (motor == null) motor = GetComponentInParent<Motor>(); Setup();
+			if (personaje == null) personaje = motor.transform; Setup();
+		}
+
 		private void LateUpdate()
 		{
 			vistaDebug = DebugDraw.CalculateViewFrustum(GetComponent<Camera>(), ref dimension);
@@ -220,6 +226,17 @@ namespace LvlI
 
 			GetComponent<Camera>().transform.position = camPosCache;
 			vistaDebug = DebugDraw.CalculateViewFrustum(GetComponent<Camera>(), ref dimension);
+		}
+
+		private void Setup()
+		{
+			dirFija = personaje.forward;
+			actualDirFija = personaje.forward;
+
+			camPos = new PosicionCamara();
+			camPos.Init("Camara", new Vector3(0.0f, 1.6f, 0.2f), new GameObject().transform, motor.transform);
+
+			offSetPersonaje = personaje.position + new Vector3(0f, distanciaArriba, 0f);
 		}
 		#endregion
 	}
