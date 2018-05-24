@@ -1,9 +1,9 @@
 ﻿//                                  ┌∩┐(◣_◢)┌∩┐
 //																				\\
-// Motor.cs (08/05/2018)														\\
+// Motor.cs (09/04/2018)														\\
 // Autor: Antonio Mateo (.\Moon Antonio) 	antoniomt.moon@gmail.com			\\
 // Descripcion:		Logica del personaje.										\\
-// Fecha Mod:		08/05/2018													\\
+// Fecha Mod:		09/04/2018													\\
 // Ultima Mod:		Version Inicial												\\
 //******************************************************************************\\
 
@@ -17,7 +17,7 @@ namespace LvlI
 	/// <summary>
 	/// <para>Logica del personaje.</para>
 	/// </summary>
-	public class Motor : NetworkBehaviour
+	public class Motor : NetworkBehaviour 
 	{
 		#region Constantes
 		private const float SPRINT_VEL = 2.0f;
@@ -39,7 +39,7 @@ namespace LvlI
 		#endregion
 
 		#region Variables Privadas
-		private float capAlturat;
+		private float capAltura;
 		private AnimatorStateInfo stateInfo;
 		private AnimatorTransitionInfo transInfo;
 		private float leftX = 0f;
@@ -59,7 +59,9 @@ namespace LvlI
 
 		#region Propiedades
 		public Animator Animator { get { return this.animator; } }
+
 		public float Velocidad { get { return this.velocidad; } }
+
 		public float LocomotionLimite { get { return 0.2f; } }
 		#endregion
 
@@ -68,7 +70,7 @@ namespace LvlI
 		{
 			animator = this.GetComponent<Animator>();
 			capCollider = this.GetComponent<CapsuleCollider>();
-			capAlturat = capCollider.height;
+			capAltura = capCollider.height;
 
 			if (animator.layerCount >= 2)
 			{
@@ -87,8 +89,7 @@ namespace LvlI
 		#region Actualizadores
 		private void Update()
 		{
-			if (!isLocalPlayer)
-				return;
+			if (!isLocalPlayer) return;
 
 			// Si hay un animator
 			if (animator)
@@ -120,7 +121,7 @@ namespace LvlI
 			StickLogica(this.transform, cam, ref direccion, ref velPersonaje, ref anguloPersonaje, IsPivotando());
 
 			// Evento Sprint
-			/*if (Input.GetButton("Sprint"))
+			if (Input.GetButton("Sprint"))
 			{
 				velocidad = Mathf.Lerp(velocidad, SPRINT_VEL, Time.deltaTime);
 				cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(cam.GetComponent<Camera>().fieldOfView, SPRINT_FOV, fovDampTime * Time.deltaTime);
@@ -129,7 +130,7 @@ namespace LvlI
 			{
 				velocidad = velPersonaje;
 				cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(cam.GetComponent<Camera>().fieldOfView, NORMAL_FOV, fovDampTime * Time.deltaTime);
-			}*/
+			}
 
 			// Forzar la direccion y velocidad del personaje
 			animator.SetFloat("Speed", velocidad, velDampTime, Time.deltaTime);
@@ -143,7 +144,6 @@ namespace LvlI
 					Animator.SetFloat("Angle", anguloPersonaje);
 				}
 			}
-
 			if (velocidad < LocomotionLimite && Mathf.Abs(leftX) < 0.05f)
 			{
 				animator.SetFloat("Direction", 0f);
@@ -153,11 +153,9 @@ namespace LvlI
 
 		private void FixedUpdate()
 		{
+			if (!isLocalPlayer) return;
 
-			if (!isLocalPlayer)
-				return;
-
-			// Girar el modelo si la palanca esta inclinada hacia la derecha o izquierda, pero solo si el personaje se mueve en esa direccion
+			// Girar el modelo si la palanca esta inclinada hacia la derecha o hacia la izquierda, pero solo si el personaje se mueve en esa direccion
 			if (IsInLocomotion() && !IsPivotando() && ((direccion >= 0 && leftX >= 0) || (direccion < 0 && leftX < 0)))
 			{
 				Vector3 rot = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotPorSegundo * (leftX < 0f ? -1f : 1f), 0f), Mathf.Abs(leftX));
@@ -165,7 +163,7 @@ namespace LvlI
 				this.transform.rotation = (this.transform.rotation * rotDelta);
 			}
 
-			// Mientras el personaje salte, agregar el translado
+			// Mientras el personaje salte agregar el translado
 			if (IsInJump())
 			{
 				float oldY = transform.position.y;
@@ -174,7 +172,7 @@ namespace LvlI
 				{
 					transform.Translate(Vector3.forward * Time.deltaTime * distSalto);
 				}
-				capCollider.height = capAlturat + (animator.GetFloat("CapsuleCurve") * 0.5f);
+				capCollider.height = capAltura + (animator.GetFloat("CapsuleCurve") * 0.5f);
 
 				cam.transform.Translate(Vector3.up * (transform.position.y - oldY));
 			}
@@ -182,7 +180,7 @@ namespace LvlI
 		#endregion
 
 		#region Metodos Publicos
-		public void StickLogica(Transform root,Transform camara, ref float dir, ref float vel, ref float angulo, bool isGirando)
+		public void StickLogica(Transform root, Transform camara, ref float dir, ref float vel, ref float angulo, bool isGirando)
 		{
 			// Obtener valores
 			Vector3 rootDir = root.forward;
@@ -198,13 +196,13 @@ namespace LvlI
 			Vector3 movDir = refAux * strickDir;
 			Vector3 axisAux = Vector3.Cross(movDir, rootDir);
 
-			// Dibujar los debugs
+			// Dibujar los Debugs
 			Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), movDir, Color.green);
 			Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), rootDir, Color.magenta);
 			Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2f, root.position.z), strickDir, Color.blue);
 			Debug.DrawRay(new Vector3(root.position.x, root.position.y + 2.5f, root.position.z), axisAux, Color.red);
 
-			// Modificar angulo
+			// Modificar el angulo
 			float anguloRoot = Vector3.Angle(rootDir, movDir) * (axisAux.y >= 0 ? -1f : 1f);
 			if (!isGirando)
 			{
@@ -213,6 +211,15 @@ namespace LvlI
 			anguloRoot /= 180f;
 
 			dir = anguloRoot * velDireccion;
+		}
+
+		public override void OnStartLocalPlayer()
+		{
+			if (cam == null)
+			{
+				cam.GetComponent<Camara>().Motor = this;
+				cam.GetComponent<Camara>().Personaje = this.transform;
+			}
 		}
 		#endregion
 
@@ -227,7 +234,7 @@ namespace LvlI
 
 		public bool IsInJump()
 		{
-			return (IsInIdleJump() || IsInLocomotionJump());	
+			return (IsInIdleJump() || IsInLocomotionJump());
 		}
 
 		public bool IsInIdleJump()

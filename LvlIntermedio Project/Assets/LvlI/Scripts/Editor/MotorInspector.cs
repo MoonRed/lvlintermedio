@@ -1,9 +1,9 @@
 ﻿//                                  ┌∩┐(◣_◢)┌∩┐
 //																				\\
-// MotorInspector.cs (08/05/2018)												\\
+// MotorInspector.cs (11/04/2018)												\\
 // Autor: Antonio Mateo (.\Moon Antonio) 	antoniomt.moon@gmail.com			\\
 // Descripcion:		Inspector de Motor											\\
-// Fecha Mod:		08/05/2018													\\
+// Fecha Mod:		11/04/2018													\\
 // Ultima Mod:		Version Inicial												\\
 //******************************************************************************\\
 
@@ -14,9 +14,6 @@ using UnityEditor;
 
 namespace LvlI
 {
-	/// <summary>
-	/// <para>Inspector de Motor.</para>
-	/// </summary>
 	[CustomEditor(typeof(Motor))]
 	public class MotorInspector : Editor
 	{

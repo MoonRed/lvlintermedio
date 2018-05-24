@@ -14,7 +14,7 @@ using UnityEngine.Networking;
 
 namespace LvlI
 {
-	public class ServerManager : MonoBehaviour
+	public class ServerManager : MonoBehaviour 
 	{
 		#region Variables Publicas
 		public GameObject playerPrefab;
@@ -24,7 +24,7 @@ namespace LvlI
 		#region Eventos
 		public virtual void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
 		{
-			var player = Instantiate(playerPrefab, playerSpawnPos, Quaternion.identity);
+			var player = (GameObject)GameObject.Instantiate(playerPrefab, playerSpawnPos, Quaternion.identity);
 			NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 		}
 		#endregion
